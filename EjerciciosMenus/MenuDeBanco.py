@@ -23,16 +23,24 @@ while menu:
                 print("El pago excede la deuda")
 
     elif op_menu == 2:
-        print("Comprando...")
-        articulo = int(input("Ingrese la cantidad que desea comprar: "))
-        for i in range (articulo):
-            compra = int(input("Coloque el precio del producto: "))
-            if compra >= 0:
-                total += compra
+        try:
+            print("Comprando...")
+            articulo = int(input("Ingrese la cantidad que desea comprar: "))
+            if articulo < 0:
+                print("Ingrese un número mayor o igual a 0")
             else:
-                print("Ingrese un número valido")          
-        print("Se ha realizado tu compra")
-        print(f"el total es de: {total}")
+                for i in range (articulo):
+                    compra = int(input("Coloque el precio del producto: "))
+                    if compra >= 0:
+                        print("Valido")
+                        total = total + compra
+                    else:
+                        if compra < 0:
+                            print("Ingrese un número valido")    
+                print("Se ha realizado tu compra")
+                print(f"el total es de: {total}")      
+        except ValueError:
+            print("Le pedimos que ingrese un número por favor.")
 
     elif op_menu == 3:
         print("Saliendo...")
