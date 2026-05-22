@@ -23,4 +23,9 @@ n2 = int(input("Ingrese otro número: "))
 sumar(n1 , n2)
 print(restar(n1 , n2))
 
+#def AreaCirculo():
+
+
+#radio = float(input("Ingrese el radio de un circulo: "))
+
 #Se puede importar funciones con: import funciones as fn (creadas en otro archivo)
