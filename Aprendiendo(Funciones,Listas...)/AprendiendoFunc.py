@@ -29,3 +29,7 @@ print(restar(n1 , n2))
 #radio = float(input("Ingrese el radio de un circulo: "))
 
 #Se puede importar funciones con: import funciones as fn (creadas en otro archivo)
+
+#return es lo que nos va a devolver el resultado
+
+print("Guardar")
