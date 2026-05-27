@@ -12,8 +12,8 @@ print(diccionario["Nombre"])
 print(diccionario["Telefono"][1])
 
 #podemos insertar datos o claves de la siguiente manera:
-diccionario["email"] = "joaqut@gmail.com"
-print(diccionario["email"])
+diccionario["Email"] = "joaqut@gmail.com"
+print(diccionario["Email"])
 
 #ingresando un número más al diccionario
 diccionario["Telefono"].append(190)
@@ -31,3 +31,5 @@ print(diccionario)
 print(diccionario["Telefono"])
 diccionario["Telefono"].pop(2)
 print(diccionario["Telefono"])
+
+print("listo")
