@@ -1,12 +1,18 @@
-productos = {
-    "Mouse": [10, 15000],
-    "Teclado": [5, 25000],
-    "Monitor": [3, 180000]
-}
+#productos = {
+#    "Mouse": [10, 15000],
+#    "Teclado": [5, 25000],
+#    "Monitor": [3, 180000]
+#}
+
+productos = {}
 
 #Definiendo funciones
 def agregar_producto(productos):
     nombre = input("Nombre del producto: ").strip()
+
+    if nombre.isdigit():
+        print("Debe ingresar letras")
+        return
 
     if nombre == "":
         print("El nombre no puede ser vacío.")
@@ -16,25 +22,68 @@ def agregar_producto(productos):
         print("El producto ya existe..")
         return
 
-    stock = int(input("Ingrese stock: "))
-    precio = int(input("Ingrese el precio: $"))
+    while True:
+        try:
+            stock = int(input("Ingrese stock: "))
+            if stock > 0:
+                break
+            else:
+                print("El stock debe ser mayor a cero")
+        except ValueError:       
+            print("Debe ingresar un número!! vuelva a intentar..")
+
+    while True:
+        try:
+            precio = int(input("Ingrese el precio: $"))
+            if precio > 0:
+                break
+            else:
+                print("Debe ingresar un número!! intentelo de nuevo...")
+        except ValueError: 
+            print("Debe ingresar un número!! vuelva a intentar..")
+
 
     productos[nombre] = [stock,precio]
     print("Productos agregados correctamente!")
 
 def mostrar_productos(productos):
-    mostrar = (productos)
-    print(f"A continuación se le mostrara todos los productos, junto a su precio y existencia... {mostrar}")
+    if len(productos) == 0:
+        print("No existen productos")
+        return
+    
+    for nombre in productos:
+        print(nombre, "-Stock:", productos[nombre][0], "-Precio:", productos[nombre][1])
 
 def buscar_productos(productos):
-    buscar = (productos)
-    buscar = str(input("Ingrese el producto que quiere buscar: "))
-    if buscar in (["Mouse"]):
-        print(["Mouse"][0][1])
+    if len(productos) == 0:
+        print("No existen productos")
+        return
+    
+    nombre = input("Nombre producto a buscar: ").strip()
+
+    if nombre in productos:
+        print("Producto encontrado")
+        print(f"-Stock: {productos[nombre][0]}")
+        print(f"-Precio $: {productos[nombre][1]}")
+    else:
+        print("Producto no encontrado")
 
 def producto_mas_caro(productos):
-    mascaro = max(productos.values())
-    print(mascaro)
+    if len(productos) == 0:
+        print("No existen productos")
+        return
+    
+    mayor = 0
+    mayorname = ""
+
+    for nombre in productos:
+        precio = productos[nombre][1]
+        if precio > mayor:
+            mayor = precio
+            mayorname = nombre
+    print(f"Su producto mas caro es: {mayorname}")
+    print(f"El precio es: {mayor}")        
+
 opcion_menu = 0
 
 while True:
