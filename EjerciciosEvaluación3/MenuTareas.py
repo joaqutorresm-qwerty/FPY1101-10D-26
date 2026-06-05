@@ -19,13 +19,11 @@ def agregar_tarea(tareasD):
 
     tarea = []
 
-    while True:
-        for i in range(cant_tareas): 
-            print("Ingrese el nombre de la tarea")
-            tarea = (input("-> "))
-            tarea.append(tareasD)
-            print("Tarea ingresada!")
-            break
+    for i in range(cant_tareas): 
+        print("Ingrese el nombre de la tarea")
+        tarea = (input("-> "))
+        tareasD.append(tarea)
+        print("Tarea ingresada!")
 
 def imprimir_tareas(tareasD):
     if len(tareasD) == 0:
@@ -33,6 +31,12 @@ def imprimir_tareas(tareasD):
         return
     
     print(tareasD)
+
+def eliminar_tarea(tareasD):
+    quitar = input("Igrese la tarea que quiere eliminar: ").strip().capitalize()
+    if quitar in tareasD:
+        print("Tarea eliminada")
+        tareasD.remove(quitar)
 
 tareasD = []
 
@@ -48,11 +52,11 @@ while True:
     if op == 1:
         agregar_tarea(tareasD)
     elif op == 2:
-        print
+        eliminar_tarea(tareasD)
     elif op == 3:
         imprimir_tareas(tareasD)
     elif op == 4:
         print("Saliendo...")
         break
     else:
-        print
+        print("Opcioón invalida")
