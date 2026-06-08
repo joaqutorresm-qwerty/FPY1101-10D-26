@@ -56,11 +56,11 @@ def eliminar_usuario(usuarios):
     if len(usuarios) == "":
         print("No hay usuarios ingresados")
     
-    usuario = input("Nombre del usuario a eliminar: ").strip()
+    quitar = input("Igrese el usuario a eliminar: ").strip().capitalize()
 
-    if usuario in usuarios:
-        del usuarios[usuario]
+    if quitar in usuarios:
         print("Usuario eliminado")
+        del usuarios[quitar]
     else:
         print("Usuario no encontrado")
     
