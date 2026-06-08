@@ -37,8 +37,6 @@ def ingresar_usuario():
 
     usuarios[usuario] = [sexo,contrasena]
     
-
-
 def buscar_usuario(usuarios):
     if len(usuarios) == "":
         print("No hay usuarios ingresados")
@@ -65,7 +63,6 @@ def eliminar_usuario(usuarios):
         print("Usuario no encontrado")
     
 usuarios = {}
-
 
 while True:
     print("-- MENU USUARIOS --")
