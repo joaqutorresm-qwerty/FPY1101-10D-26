@@ -52,7 +52,17 @@ def buscar_usuario(usuarios):
     else:
         print("Usuario no encontrado")
 
+def eliminar_usuario(usuarios):
+    if len(usuarios) == "":
+        print("No hay usuarios ingresados")
+    
+    usuario = input("Nombre del usuario a eliminar: ").strip()
 
+    if usuario in usuarios:
+        del usuarios[usuario]
+        print("Usuario eliminado")
+    else:
+        print("Usuario no encontrado")
     
 usuarios = {}
 
@@ -77,10 +87,9 @@ while True:
     elif op == 2:
         buscar_usuario(usuarios)
     elif op == 3:
-        print("WIP")
+        eliminar_usuario(usuarios)
     elif op == 4:
         print("Saliendo del programa...")
         break
     else:
         print("Por favor, escoja una opción valida")
-
