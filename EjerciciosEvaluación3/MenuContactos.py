@@ -24,8 +24,8 @@ def agregar_contacto():
 def buscar_contacto():
     contacto = input("Ingrese el contacto a buscar: ")
     if contacto in contactos:
-        print("Contacto encontrado: ", contacto)
-        print("Número de teléfono: ", agenda[contacto])
+        print("Contacto encontrado: ",contacto)
+        print("Número de teléfono: +",agenda[contacto])
     else:
         print("Contacto no encontrado")
 
@@ -33,6 +33,8 @@ contactos = []
 agenda = {}
 
 while True:
+    print("----------------------")
+    print("--- MENU CONTACTOS ---")
     print("1. Agregar contacto")
     print("2. Buscar contactos")
     print("3. Salir")
