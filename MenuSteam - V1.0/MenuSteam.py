@@ -29,10 +29,25 @@ saldo_inicial = 0
 
 
 while True:
-    print("1. Ver Catálogo de Tienda")
-    print("2. Agregar juego al Carrito")
-    print("3. Ver mi Carrito")
-    print("4. Cargar fondos a la Cartera")
-    print("5. Pagar Carrito")
-    print("6. Ver mi Biblioteca")
-    print("7. Salir")
+    print("--- MENU STEAM ---")
+    fn.mostrar_menu()
+
+    op = int(input("Ingrese el número de la opción que desea realizar: "))
+
+    if op == 1:
+        print("TEST")
+    elif op == 2:
+        fn.buscar_juego(catalogo_steam, carrito_compras) 
+    elif op == 3:
+        print("W")
+    elif op == 4:
+        print("W")
+    elif op == 5:
+        print("W")
+    elif op == 6:
+        print("W")
+    elif op == 7:
+        print("¡Saliendo del programa!")
+        break
+    else:
+        print("Escoja una opción valida.")   
