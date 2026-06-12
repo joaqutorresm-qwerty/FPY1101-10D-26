@@ -28,19 +28,28 @@ def mostrar_menu():
     print("7. Salir")
 
 def mostrar_juegos(lista_generica):
-    print("Wip")
-
-def calcular_total(lista_generica):
-    print("WIP")
+    if len(lista_generica) == 0:
+        print("No hay juegos en la lista.")
+    else:
+         for juego in lista_generica:
+            print(f"{juego['titulo']} - Precio: ${juego['precio']}")
 
 def buscar_juego(catalogo, nombre_buscado):
     busca_juego = input("Ingresa el nombre del juego a buscar: ").lower()
-    carrito_compras.append(busca_juego)
 
-    if busca_juego not in catalogo_steam:
-        print("El juego que buscas no existe.")
-    
+    juego_encontrado = False
+
+    for juego in catalogo:
+        if juego["titulo"].lower() == busca_juego:
+            print(f"Juego encontrado: {juego['titulo']} - Precio: ${juego['precio']}")
+            juego_encontrado = True
+            return juego
+
     if busca_juego in carrito_compras:
-        print("Este juego ya esta en tu carrito")
-    
-    
+            print("Este juego ya se encuentra en el carrito.")
+    else:
+         carrito_compras.append(busca_juego)
+         print(f"{busca_juego} ha sido agregado al carrito.")
+         
+    if not juego_encontrado:
+        print("Juego no encontrado en el catálogo.")

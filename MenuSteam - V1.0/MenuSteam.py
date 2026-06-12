@@ -27,6 +27,7 @@ print("Bienvenido a Steam, por favor ingrese su nombre de Usuario.")
 nombre_usuario = input("-> ")
 saldo_inicial = 0
 
+print(f"¡Hola {nombre_usuario}! Tu saldo inicial es de ${saldo_inicial}.")
 
 while True:
     print("--- MENU STEAM ---")
@@ -35,11 +36,23 @@ while True:
     op = int(input("Ingrese el número de la opción que desea realizar: "))
 
     if op == 1:
-        print("TEST")
+        fn.mostrar_juegos(catalogo_steam)
     elif op == 2:
-        fn.buscar_juego(catalogo_steam, carrito_compras) 
+        nombre_buscado = input("Ingresa el nombre del juego a buscar: ").strip()
+        juego_encontrado = fn.buscar_juego(catalogo_steam, nombre_buscado)
+
+        if juego_encontrado == None:
+            print("Juego no encontrado.")
+        else:
+            if juego_encontrado in carrito_compras:
+                print("Este juego ya se encuentra en el carrito.")
+            elif juego_encontrado in biblioteca_juegos:
+                print("Este juego ya se encuentra en tu biblioteca.")
+            else:
+                carrito_compras.append(juego_encontrado)
+                print(f"{juego_encontrado['titulo']} ha sido agregado al carrito.")
     elif op == 3:
-        print("W")
+        fn.mostrar_juegos(carrito_compras)
     elif op == 4:
         print("W")
     elif op == 5:
