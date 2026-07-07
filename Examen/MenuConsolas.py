@@ -2,7 +2,7 @@ consolas = {}
 ventas = {}
 
 def menu():
-    print("#"*30)
+    print("##### MENU CONSOLAS ####")
     print("1. Agregar consola")
     print("2. Buscar consola por sigla")
     print("3. Eliminar consola")
@@ -37,7 +37,7 @@ def agregar_consola(consolas, ventas):
         print("Ingrese un fabricante valido")
         return
     
-    ano_lanzamiento = convertir_entero(input("Ingrese el ano de lanzamiento"))
+    ano_lanzamiento = convertir_entero(input("Ingrese el ano de lanzamiento: "))
     if ano_lanzamiento is False or not validacion_anolanzamiento(ano_lanzamiento):
         print("Ingrese un ano valido")
         return
@@ -55,11 +55,7 @@ def agregar_consola(consolas, ventas):
     consolas[sigla] = [nombre, fabricante, ano_lanzamiento] # se puede hacer de tal manera: consolas[sigla] = [nombre, fabricante, int(ano_lanzamiento)]
     ventas[sigla] = [precio, stock] 
     print("Se ha agregado la consola.")
-    print(type(consolas[sigla][0])) 
-    print(type(consolas[sigla][1]))
-    print(type(consolas[sigla][2]))
-    print(type(ventas[sigla][0])) 
-    print(type(ventas[sigla][1]))
+    
 
 def validacion_sigla(sigla):
     if not (2 <= len(sigla) <= 5):
@@ -121,24 +117,53 @@ def convertir_float(input):
     except ValueError:
         return False
 
-def buscar_consola(consolas, ventas):
+def buscar_interactivo(consolas, ventas):
     sigla = input("Ingrese la consola a buscar (SIGLA): ")
-
-    if not sigla in consolas:
+    busqueda = buscar_consola(consolas, ventas, sigla)
+    if not busqueda:
         print("No hay consolas")
+
+def buscar_consola(consolas, ventas, sigla):
+    if not sigla in consolas:
         return False
     else:
         print("###### Consola Encontrada #####")
         print(f"Sigla: {sigla}")
         print(f"Nombre: {consolas[sigla][0]}")
         print(f"Fabricante: {consolas[sigla][1]}")
-        print(f"Ano Lanz.: {consolas[sigla][2]}")
+        print(f"Ano Lanz: {consolas[sigla][2]}")
         print(f"Precio: {ventas[sigla][0]}")
         print(f"Stock: {ventas[sigla][1]}")
         return True
 
 def eliminar_consola(consolas, ventas):
-    print("WIP")
+    sigla = input("Ingrese la sigla a eliminar: ")
+    consola = buscar_consola(consolas, ventas, sigla)
+    
+    if consola:
+        decision = input("Desea eliminar la consola? s/n: ")
+        if decision == "s":
+            del consolas[sigla]
+            del ventas[sigla]
+            print("### Consola eliminada ###")
+        else:
+            print("La consola no se ha eliminado")
+    else:
+        print("No se ha encontado la consola")
+    
+def mostrar_consola(consolas, ventas):
+    if not consolas:
+        print("No hay consolas registradas")
+    else:
+        print("==============================")
+        print("LISTADO COMPLETO DE CONSOLAS")
+        print("==============================")
+        for sigla in consolas:
+            nombre, fabricante, ano = consolas[sigla]
+            precio, stock = ventas[sigla]
+            print(f" {sigla} - {nombre} - {fabricante} - {ano} - {precio} - {stock}")
+            print("==============================")
+        print(f"Total de consolas: {len(consolas)}")
 
 while True:
     menu()
@@ -146,11 +171,11 @@ while True:
     if op == 1:
         agregar_consola(consolas, ventas)
     elif op == 2:
-        buscar_consola(consolas, ventas)
+        buscar_interactivo(consolas, ventas)
     elif op == 3:
         eliminar_consola(consolas, ventas)
     elif op == 4:
-        print
+        mostrar_consola(consolas, ventas)
     elif op == 5:
         print("Saliendo...")
         break
